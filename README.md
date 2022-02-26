@@ -6,6 +6,7 @@ A very small and oversimplified state manager written in pure Javascript.
 
 Vssm was created from a personal need for a small and fast state management library. It exists to give a dumb-simple state management solution to small frontend projects, without having to install and configure robust state managers just to define some variables.
 Vssm is written in pure Javascript.
+
 This means Vssm has **_no dependencies_** and it weighs **_1.5kb_** in it's minified version.
 It's so small it's not even there. You can just plug it in your current project and start managing your state.
 
@@ -17,17 +18,18 @@ Install using npm/yarn with
 
 ```bash
 npm i vssm
-```
-
-```bash
+# OR
 yarn install vssm
 ```
 
 ### Using the minified version
 
 If you wish to use Vssm's minified version (<1.5Kb instead of 2.8Kb).
+
 You can download it directly from (https://github.com/tk-ni/vssm/blob/master/lib/vssm.min.js).
+
 Along with the type declations file (https://github.com/tk-ni/vssm/blob/master/lib/vssm.min.d.ts).
+
 Simply import all of Vssm's functions from the minified file.
 
 ```javascript
@@ -58,7 +60,11 @@ createVSSM({
 
 Each `state` created with `createState` is an instance in your project's global state.
 
-Please make sure your state key and the string provided to `createState` have the same value (e.g. `test: createState("test", { ... })`). **If they won't have the same value, some events will fail to emit and catch.**
+Please make sure your state key and the string provided to `createState` have the same value.
+
+(e.g. `test: createState("test", { ... })`).
+
+**If they won't have the same value, some events will fail to emit and catch.**
 
 ## Getting the state
 
@@ -68,11 +74,6 @@ To get and use the state's parameters, import `getVSSM` from `"vssm"`
 
 ```javascript
 import { getVSSM } from 'vssm'
-```
-
-Deconstruct the state from the combined global state and use it's parameters.
-
-```javascript
 const { test } = getVSSM()
 console.log(test.param) // 0
 ```
@@ -195,6 +196,11 @@ export default {
 }
 </script>
 ```
+
+## TODO
+ - Improve error handling.
+ - Test in bigger projects to see how Vssm handles more than a couple variables.
+ - Create a simple documentation website, with React and Vssm!
 
 ## Found a bug?
 
