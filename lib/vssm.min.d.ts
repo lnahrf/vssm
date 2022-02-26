@@ -20,13 +20,14 @@ declare class VSSMState {
     private static defineParents;
     private static defineMutationEvents;
     private static initParams;
+    private static resolveEventPath;
     name: string;
     origin: GenericObject;
     mutationEvents: MutationEvents;
     params: VSSMParameters;
     proxy: this;
     watchParam: (param: string, task: () => void) => void;
-    constructor(name: string, obj: GenericObject);
+    constructor(name: string, state: GenericObject);
 }
 declare class VSSMParam {
     value: any;
@@ -40,6 +41,6 @@ declare class VSSMParam {
     proxy: GenericObject;
     constructor(value: any, key: string, parent: string, event: CustomEvent);
 }
-export declare const createVSSM: (obj: CombinedVSSMState) => VSSM;
-export declare const createState: (name: string, obj: GenericObject) => VSSMState;
+export declare const createVSSM: (combinedState: CombinedVSSMState) => VSSM;
+export declare const createState: (name: string, state: GenericObject) => VSSMState;
 export declare const getVSSM: () => CombinedVSSMState;
