@@ -1,11 +1,12 @@
 {
   "name": "vssm",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A very small and oversimplified state management lib",
   "repository": {
     "url": "https://github.com/tk-ni/vssm"
   },
-  "main": "./lib/vssm.min.js",
+  "main": "./lib/index.js",
+  "types": "./lb/index.d.ts",
   "keywords": [],
   "author": "",
   "license": "MIT",
