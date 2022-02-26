@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "compress": "uglifyjs ./lib/index.js --compress --mangle -o ./lib/vssm.min.js",
-    "publish": "npm run compress & npm publish"
+    "release": "npm run compress & npm publish & exit 0"
   },
   "prettier": {
     "semi": false,
