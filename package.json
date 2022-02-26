@@ -7,7 +7,12 @@
   },
   "main": "./lib/index.js",
   "types": "./lb/index.d.ts",
-  "keywords": [],
+  "keywords": [
+    "minimal",
+    "simple",
+    "state",
+    "management"
+  ],
   "author": "",
   "license": "MIT",
   "scripts": {
