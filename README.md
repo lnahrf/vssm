@@ -5,9 +5,8 @@ A very small and oversimplified state manager written in pure Javascript.
 ## Why?
 
 Vssm was created from a personal need for a small and fast state management library. It exists to give a dumb-simple state management solution to small frontend projects, without having to install and configure robust state managers just to define some variables.
-Vssm is written in pure Javascript.
 
-This means Vssm has **_no dependencies_** and it weighs **_1.5kb_** in it's minified version.
+Vssm is written in pure Javascript, this means Vssm has **_no dependencies_** and it weighs **_1.5kb_** in it's minified version.
 It's so small it's not even there. You can just plug it in your current project and start managing your state.
 
 **_Disclaimer_**: _Vssm is not here to replace popular state management libraries, it's here to give a tiny, native solution to projects that wish to stay relatively small, and still enjoy the perks of global state management._
@@ -40,8 +39,6 @@ Or simply install Vssm using npm/yarn and import your functions from `"vssm/lib/
 
 ## Javascript
 
-Import `createVSSM` and `createState` from `"vssm"`
-
 ```javascript
 import { createVSSM, createState } from 'vssm'
 ```
@@ -69,8 +66,6 @@ Please make sure your state key and the string provided to `createState` have th
 ## Getting the state
 
 Fetching the state value from a different module/component.
-
-To get and use the state's parameters, import `getVSSM` from `"vssm"`
 
 ```javascript
 import { getVSSM } from 'vssm'
@@ -149,7 +144,7 @@ export default function SomeComponent() {
 
 **Important:** set the initial state in your `main.js` file (this is important, it will prevent your Vssm instance from being garbage collected).
 
-**Important:** Change all `"vssm"` imports to `"vssm/lib"`, for some reason Vue's default configuration won't type Vssm's classes and methods when importing from `"vssm"` (I'm not sure why this is happening, I might fix it in the future).
+**Important:** Change all `"vssm"` imports to `"vssm/lib"`, for some reason Vue's default configuration won't declare the types of Vssm's classes and methods when importing from `"vssm"` (I'm not sure why this is happening, I might fix it in the future).
 
 ```javascript
 import { createApp } from 'vue'
