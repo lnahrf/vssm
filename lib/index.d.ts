@@ -10,10 +10,12 @@ declare type MutationEvents = {
 declare type VSSMParameters = {
     [key: string]: VSSMParam;
 };
+
 declare class VSSM {
     combinedState: CombinedVSSMState;
     constructor(combinedState: CombinedVSSMState);
 }
+
 declare class VSSMState {
     private static defineParents;
     private static defineMutationEvents;
