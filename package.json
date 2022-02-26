@@ -11,7 +11,8 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "compress": "uglifyjs ./lib/index.js --compress --mangle -o ./lib/vssm.min.js"
+    "compress": "uglifyjs ./lib/index.js --compress --mangle -o ./lib/vssm.min.js",
+    "publish": "npm run compress & npm publish"
   },
   "prettier": {
     "semi": false,
