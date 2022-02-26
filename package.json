@@ -1,0 +1,28 @@
+{
+  "name": "vssm",
+  "version": "0.0.2",
+  "description": "A very small and oversimplified state management lib",
+  "repository": {
+    "url": "https://github.com/tk-ni/vssm"
+  },
+  "main": "./lib/vssm.min.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "compress": "uglifyjs ./lib/index.js --compress --mangle -o ./lib/vssm.min.js"
+  },
+  "prettier": {
+    "semi": false,
+    "arrowParens": "avoid",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "trailingComma": "none",
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5",
+    "uglify-js": "^3.15.2"
+  }
+}
