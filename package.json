@@ -8,15 +8,16 @@
   "main": "./lib/index.js",
   "types": "./lb/index.d.ts",
   "keywords": [
+    "light-weight",
     "minimal",
     "simple",
     "state",
     "management"
   ],
-  "author": "",
+  "author": "tk-ni",
   "license": "MIT",
   "scripts": {
-    "compress": "uglifyjs ./lib/index.js --compress --mangle -o ./lib/vssm.min.js",
+    "compress": "node scripts/minify.js",
     "release": "npm run compress & npm publish & exit 0"
   },
   "prettier": {
