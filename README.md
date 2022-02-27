@@ -6,7 +6,7 @@ A very small and oversimplified state manager written in pure Javascript.
 
 Vssm was created from a personal need for a small and fast state management library. It exists to give a dumb-simple state management solution to small frontend projects, without having to install and configure robust state managers just to define some variables.
 
-Vssm is written in pure Javascript, this means Vssm has **_no dependencies_** and it weighs **_1.5kb_** in it's minified version.
+Vssm is written in pure Javascript, this means Vssm has **_no dependencies_** and it weighs **_1.9kb_** in it's minified version.
 It's so small it's not even there. You can just plug it in your current project and start managing your state.
 
 **_Disclaimer_**: _Vssm is not here to replace popular state management libraries, it's here to give a tiny, native solution to projects that wish to stay relatively small, and still enjoy the perks of global state management._
@@ -23,7 +23,7 @@ yarn install vssm
 
 ### Using the minified version
 
-If you wish to use Vssm's minified version (<1.5Kb instead of 2.8Kb).
+If you wish to use Vssm's minified version (<2Kb instead of 2.8Kb).
 
 You can download it directly from (https://github.com/tk-ni/vssm/blob/master/lib/vssm.min.js).
 
@@ -193,9 +193,10 @@ export default {
 ```
 
 ## TODO
- - Improve error handling.
- - Test in bigger projects to see how Vssm handles more than a couple variables.
- - Create a simple documentation website, with React and Vssm!
+
+- Improve error handling.
+- Test in bigger projects to see how Vssm handles more than a couple variables.
+- Create a simple documentation website, with React and Vssm!
 
 ## Found a bug?
 
