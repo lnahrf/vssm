@@ -1,6 +1,6 @@
 {
   "name": "vssm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A very small and oversimplified state management lib",
   "repository": {
     "url": "https://github.com/tk-ni/vssm"
