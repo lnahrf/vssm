@@ -1,15 +1,124 @@
-# Very Small State Manager (vssm)
+# Very Small State Manager <img src="misc/assets/vssm_logo_small.png" width="110">
+
+<img src="misc/assets/speed_blazing.svg">
+<img src="misc/assets/size_183kb.svg">
+<img src="misc/assets/dependencies_none.svg">
 
 A very small and oversimplified state manager written in pure Javascript.
 
 ## Why?
 
-Vssm was created from a personal need for a small and fast state management library. It exists to give a dumb-simple state management solution to small frontend projects, without having to install and configure robust state managers just to define some variables.
+Vssm was created from a personal need for a small, fast and basic state management library. It exists to give the simplest solution to small frontend projects, so you won't have to install and configure robust libraries just to define some variables.
 
-Vssm is written in pure Javascript, this means Vssm has **_no dependencies_** and it weighs **_1.9kb_** in it's minified version.
+Vssm has **_no dependencies_** and it weighs **_1.9kb_** in it's minified version.
 It's so small it's not even there. You can just plug it in your current project and start managing your state.
 
-**_Disclaimer_**: _Vssm is not here to replace popular state management libraries, it's here to give a tiny, native solution to projects that wish to stay relatively small, and still enjoy the perks of global state management._
+_Keep in mind that Vssm is not here to replace popular state management libraries, it's here to give a tiny, native solution for projects that wish to stay relatively small, and still enjoy state management._
+
+### Vssm is
+
+- Extremely light-weight
+- A Plug-and-Play solution
+- Super easy to get the hang of
+- Has no actions, reducers or complicated cases
+- Dependency-less
+
+# Quick Start
+
+### Create State
+
+```javascript
+import { createVSSM, createState } from 'vssm'
+
+createVSSM({
+  user: createState('user', {
+    name: '',
+    address: ''
+  }),
+  cart: createState('cart', {
+    items: []
+  })
+})
+```
+
+### Assign New Values
+
+```javascript
+import { getVSSM } from 'vssm'
+const { user, cart } = getVSSM()
+
+user.name = 'Conor Mason'
+user.address = 'P.Sherman 42 Wallaby Way, Sydney'
+
+// If the state variable is not primitive (e.g it's an object or array), in order to trigger the mutation event, we need to create a new copy of our object in memory and save its reference inside the original variable.
+
+// An easy way of doing so is deconstruction (e.g {...obj} or [...arr])
+cart.items = [...cart.items, {
+  name: 'Is Everyone Going Crazy?',
+  type: 'Album'
+  digital: true
+  price: 25,
+  currency: 'USD'
+}]
+```
+
+### Watch for Changes
+
+```javascript
+import { getVSSM } from 'vssm'
+const { user, cart } = getVSSM()
+
+cart.items = () => {
+  console.log('Cart updated!, current items in cart:', cart.items)
+}
+```
+
+# Do's and Dont's
+
+Make sure your state key and the string provided to `createState` have the same value.
+
+```javascript
+// Don't
+createVSSM({
+  user: createState('userState', {
+    name: ''
+  })
+})
+
+// Do
+createVSSM({
+  user: createState('user', {
+    name: ''
+  })
+})
+```
+
+When assigning values to state parameters that aren't primitive (e.g. they're objects or arrays), in order to trigger the mutation event, we need to create a new copy of our object in memory and save its reference inside the original variable.
+
+```javascript
+const { cart } = getVSSM()
+
+// Don't
+cart.items.push(item)
+
+// Do
+cart.items = [...cart.items, item]
+```
+
+Don't interact directly with the state object, interact with it's parameters (interacting with the state object directly might lead to weird or unexpected behavior, like events not emitting or catching).
+
+```javascript
+// Don't
+const { cart } = getVSSM()
+cart = { ...cart, ...{ items: [] } }
+
+// Do
+const { cart } = getVSSM()
+cart.items = []
+
+// Do
+cart.items = [...cart.items, newItem]
+```
 
 # Getting Started
 
@@ -21,7 +130,7 @@ npm i vssm
 yarn install vssm
 ```
 
-### Using the minified version
+## Using the minified version
 
 If you wish to use Vssm's minified version (<2Kb instead of 2.8Kb).
 
@@ -32,25 +141,22 @@ Along with the type declations file (https://github.com/tk-ni/vssm/blob/master/l
 Simply import all of Vssm's functions from the minified file.
 
 ```javascript
-import { createVSSM, createState, getVSSM } from 'path/to/file/vssm.min.js'
+import { createVSSM, createState, getVSSM } from 'path/to/vssm.min.js'
 ```
 
 Or simply install Vssm using npm/yarn and import your functions from `"vssm/lib/vssm.min.js"`
 
 ## Javascript
 
-```javascript
-import { createVSSM, createState } from 'vssm'
-```
-
 Configure your project's initial state
 
 ```javascript
 // main.js
+import { createVSSM, createState } from 'vssm'
 
 createVSSM({
-  test: createState('test', {
-    param: 0
+  user: createState('user', {
+    name: 'Conor Mason'
   })
 })
 ```
@@ -63,43 +169,44 @@ Please make sure your state key and the string provided to `createState` have th
 
 **If they won't have the same value, some events will fail to emit and catch.**
 
-## Getting the state
+## Getting State Values
 
-Fetching the state value from a different module/component.
+Import `getVSSM` from `"vssm"` and deconstruct the required state.
 
 ```javascript
 import { getVSSM } from 'vssm'
-const { test } = getVSSM()
-console.log(test.param) // 0
+const { user } = getVSSM()
+
+console.log(user.name) // Conor Mason
 ```
 
-## Watching state changes
+## Watching State Changes
 
-Catching the mutation event.
-
-To watch (or listen to) a state parameter for changes, simply assign a function value to the parameter and write your logic within that function.
+To watch (or listen to) a state parameter for changes, simply assign a function value to the parameter and write your logic within the function.
 
 ```javascript
-const { test } = getVSSM()
-test.param = () => {
-  console.log("Watching test.param, it's new value is", test.param) // new value after mutation
+import { getVSSM } from 'vssm'
+const { user } = getVSSM()
+
+user.name = () => {
+  console.log("Watching user.name, it's new value is", user.name)
 }
 ```
 
 ## Setting the state
 
-Emitting the mutation event.
-
-There is no dedicated method to set a new value to our state parameters, to do so simply assign the value to the state parameter as if it's a normal variable.
+There is no dedicated method to set a new value to our state parameters, to do so simply assign the value as if it's a normal variable.
 
 ```javascript
-const { test } = getVSSM()
-test.param = 1
+import { getVSSM } from 'vssm'
+const { user } = getVSSM()
+
+test.name = 'Ryota Kohama'
 ```
 
 ## Using Vssm with React/Vue
 
-While it's definitely possible to use Vssm with React/Preact/Vue, it was not designed to be used in a robust framework, and therefore will not trigger component renders by default (it might be a good thing, I'm not sure yet).
+While it's definitely possible to use Vssm with React/Preact/Vue, it was not designed to be used with a robust framework, and therefore will not trigger component renders by default (it might be a good thing, I'm not sure yet).
 
 A possible workaround is to set the local component's state when catching the Vssm event. It will force the specific component to re-render on Vssm changes, and is still a relatively simple approach.
 
@@ -116,8 +223,8 @@ import App from './App'
 import { createState, createVSSM } from 'vssm'
 
 createVSSM({
-  test: createState('test', {
-    param: 0
+  user: createState('user', {
+    name: 0
   })
 })
 
@@ -130,11 +237,11 @@ In your components, use Vssm like you would in a normal Javascript project and s
 // SomeComponent.js
 
 export default function SomeComponent() {
-  const { test } = getVSSM()
-  const [display, setDisplay] = useState(test.param)
+  const { user } = getVSSM()
+  const [display, setDisplay] = useState(user.name)
 
-  // Watching test.param for changes
-  test.param = () => setDisplay(test.param)
+  // Watching user.name for changes
+  user.name = () => setDisplay(user.name)
 
   return <div>{display}</div>
 }
@@ -147,13 +254,15 @@ export default function SomeComponent() {
 **Important:** Change all `"vssm"` imports to `"vssm/lib"`, for some reason Vue's default configuration won't declare the types of Vssm's classes and methods when importing from `"vssm"` (I'm not sure why this is happening, I might fix it in the future).
 
 ```javascript
+// main.js
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createState, createVSSM } from 'vssm/lib'
 
 createVSSM({
-  test: createState('test', {
-    param: 0
+  user: createState('user', {
+    name: ''
   })
 })
 
@@ -176,16 +285,16 @@ import { getVSSM } from "vssm/lib"
 export default {
   name: "SomeComponent",
   mounted() {
-    const { test } = getVSSM()
+    const { user } = getVSSM()
 
-    // Watching test.param for changes
-    test.param = () => {
-      this.display = test.param
+    // Watching user.name for changes
+    user.name = () => {
+      this.display = user.name
     }
   },
   data() {
     return {
-      display: 0
+      display: ''
     }
   }
 }
@@ -194,8 +303,6 @@ export default {
 
 ## TODO
 
-- Improve error handling.
-- Test in bigger projects to see how Vssm handles more than a couple variables.
 - Create a simple documentation website, with React and Vssm!
 
 ## Found a bug?
