@@ -21,7 +21,7 @@ _Keep in mind that Vssm is not here to replace popular state management librarie
 - Has no actions, reducers or complicated cases
 - Dependency-less
 
-# Quick Start
+# Quick Guide
 
 ### Create State
 
