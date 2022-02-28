@@ -6,7 +6,7 @@ A very small and oversimplified state manager written in pure Javascript.
 
 Vssm was created from a personal need for a small and fast state management library. It exists to give a dumb-simple state management solution to small frontend projects, without having to install and configure robust state managers just to define some variables.
 
-Vssm is written in pure Javascript, this means Vssm has **_no dependencies_** and it weighs **_1.9kb_** in it's minified version.
+Vssm is written in pure Javascript, this means it has **_no dependencies_** and it weighs **_1.9kb_** in it's minified version.
 It's so small it's not even there. You can just plug it in your current project and start managing your state.
 
 **_Disclaimer_**: _Vssm is not here to replace popular state management libraries, it's here to give a tiny, native solution to projects that wish to stay relatively small, and still enjoy the perks of global state management._
