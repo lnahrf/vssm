@@ -55,7 +55,7 @@ user.address = 'P.Sherman 42 Wallaby Way, Sydney'
 
 cart.items = [...cart.items, {
   name: 'Is Everyone Going Crazy?',
-  type: 'Album'
+  type: 'Album',
   digital: true,
   price: 25,
   currency: 'USD'
