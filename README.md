@@ -1,8 +1,6 @@
 # Very Small State Manager <img src="misc/assets/vssm_logo_small.png" width="110">
 
-<img src="misc/assets/speed_blazing.svg">
-<img src="misc/assets/size_183kb.svg">
-<img src="misc/assets/dependencies_none.svg">
+<img src="misc/assets/speed_blazing.svg"> <img src="misc/assets/size_183kb.svg"> <img src="misc/assets/dependencies_none.svg">
 
 A very small and oversimplified state manager written in pure Javascript.
 
@@ -50,13 +48,15 @@ const { user, cart } = getVSSM()
 user.name = 'Conor Mason'
 user.address = 'P.Sherman 42 Wallaby Way, Sydney'
 
-// If the state variable is not primitive (e.g it's an object or array), in order to trigger the mutation event, we need to create a new copy of our object in memory and save its reference inside the original variable.
-
+// If the state variable is not primitive (e.g it's an object or array),
+// in order to trigger the mutation event,
+// we need to create a new copy of our object in memory and save its reference inside the original variable.
 // An easy way of doing so is deconstruction (e.g {...obj} or [...arr])
+
 cart.items = [...cart.items, {
   name: 'Is Everyone Going Crazy?',
   type: 'Album'
-  digital: true
+  digital: true,
   price: 25,
   currency: 'USD'
 }]
@@ -105,7 +105,7 @@ cart.items.push(item)
 cart.items = [...cart.items, item]
 ```
 
-Don't interact directly with the state object, interact with it's parameters (interacting with the state object directly might lead to weird or unexpected behavior, like events not emitting or catching).
+Don't interact directly with the first-level state object, interact with it's parameters (interacting with the first-level state object directly might lead to weird or unexpected behavior, like events not emitting or catching).
 
 ```javascript
 // Don't
@@ -119,7 +119,6 @@ cart.items = []
 // Do
 cart.items = [...cart.items, newItem]
 ```
-
 # Getting Started
 
 Install using npm/yarn with
@@ -224,7 +223,7 @@ import { createState, createVSSM } from 'vssm'
 
 createVSSM({
   user: createState('user', {
-    name: 0
+    name: ''
   })
 })
 
