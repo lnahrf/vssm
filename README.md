@@ -125,8 +125,10 @@ Install using npm/yarn with
 
 ```bash
 npm i vssm
-# OR
-yarn install vssm
+```
+Or
+```bash
+yarn add vssm
 ```
 
 ## Using the minified version
@@ -160,11 +162,7 @@ createVSSM({
 })
 ```
 
-Each `state` created with `createState` is an instance in your project's global state.
-
-Please make sure your state key and the string provided to `createState` have the same value.
-
-(e.g. `test: createState("test", { ... })`).
+Each `state` created with `createState` is an instance in your project's global state. Please make sure your state key and the string provided to `createState` have the same value. (e.g. `test: createState("test", { ... })`).
 
 **If they won't have the same value, some events will fail to emit and catch.**
 
@@ -192,7 +190,7 @@ user.name = () => {
 }
 ```
 
-## Setting the state
+## Setting the State
 
 There is no dedicated method to set a new value to our state parameters, to do so simply assign the value as if it's a normal variable.
 
@@ -203,13 +201,13 @@ const { user } = getVSSM()
 test.name = 'Ryota Kohama'
 ```
 
-## Using Vssm with React/Vue
+# Using Vssm with React/Vue
 
 While it's definitely possible to use Vssm with React/Preact/Vue, it was not designed to be used with a robust framework, and therefore will not trigger component renders by default (it might be a good thing, I'm not sure yet).
 
 A possible workaround is to set the local component's state when catching the Vssm event. It will force the specific component to re-render on Vssm changes, and is still a relatively simple approach.
 
-## React
+# React
 
 **Important:** set the initial state in your `index.js` file (this is important, it will prevent your Vssm instance from being garbage collected).
 
@@ -246,7 +244,7 @@ export default function SomeComponent() {
 }
 ```
 
-## Vue 3
+# Vue 3
 
 **Important:** set the initial state in your `main.js` file (this is important, it will prevent your Vssm instance from being garbage collected).
 
@@ -300,17 +298,13 @@ export default {
 </script>
 ```
 
-## TODO
-
-- Create a simple documentation website, with React and Vssm!
-
-## Found a bug?
+# Found a bug?
 
 Please open an issue in https://github.com/tk-ni/vssm/issues. Detailing the bug and your environment as much as you can. If you could provide reproduction steps or a repository that would be best.
 
 I will try and answer open issues as quickly as possible, but since I'm working as a full-time developer it might take a while (so please be patient). I promise I will answer eventually.
 
-## Want to contribute?
+# Want to contribute?
 
 I'm honored that you would want to contribute to Vssm! I'm open to all suggestions and PR's (open issues here: https://github.com/tk-ni/vssm/issues).
 
