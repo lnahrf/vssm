@@ -13,7 +13,7 @@
 
 A very small and oversimplified state manager written in pure Javascript.
 
-## Read the full documentation on the [Vssm Documentation Site](https://tk-ni.github.io/Vssm-docs/)
+## Read the full documentation on the [Vssm Documentation Site](https://lnahrf.github.io/Vssm-docs/)
 
 ## Why?
 
