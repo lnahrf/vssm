@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "description": "A very small and oversimplified state management lib",
   "repository": {
-    "url": "https://github.com/tk-ni/vssm"
+    "url": "https://github.com/lnahrf/VSSM"
   },
   "main": "./lib/index.js",
   "types": "./lb/index.d.ts",
@@ -14,7 +14,7 @@
     "state",
     "management"
   ],
-  "author": "tk-ni",
+  "author": "lnahrf",
   "license": "MIT",
   "scripts": {
     "compress": "node scripts/minify.js",
